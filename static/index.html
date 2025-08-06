@@ -110,6 +110,22 @@
             </select>
           </article>
           <article class="config">
+            <label for="identifierQuotation">Identifier quotation</label>
+            <select id="identifierQuotation">
+              <option value="preserve">Preserve</option>
+              <option value="quoted">Quoted</option>
+              <option value="unquoted">Unquoted</option>
+            </select>
+          </article>
+          <article class="config">
+            <label for="identifierQuotationCharacter">Quotation character</label>
+            <select id="identifierQuotationCharacter">
+              <option value="`">Backticks (`)</option>
+              <option value='"'>Double quotes (")</option>
+              <option value="'">Single quotes (')</option>
+            </select>
+          </article>
+          <article class="config">
             <label for="indentStyle">Indentation style:</label>
             <select id="indentStyle">
               <option value="standard">Standard</option>
@@ -175,7 +191,7 @@ order by supplier_name asc,city desc;</textarea
 
     <script
       type="text/javascript"
-      src="https://unpkg.com/sql-formatter@latest/dist/sql-formatter.min.js"
+      src="../dist/sql-formatter.min.js"
     ></script>
     <script type="text/javascript" src="index.js"></script>
   </body>

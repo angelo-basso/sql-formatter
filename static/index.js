@@ -10,6 +10,8 @@ const attachFormat = () => {
   const dataTypeCase = document.getElementById('dataTypeCase');
   const functionCase = document.getElementById('functionCase');
   const identifierCase = document.getElementById('identifierCase');
+  const identifierQuotation = document.getElementById('identifierQuotation');
+  const identifierQuotationCharacter = document.getElementById('identifierQuotationCharacter');
   const indentStyle = document.getElementById('indentStyle');
   const logicalOperatorNewline = document.getElementById('logicalOperatorNewline');
   const expressionWidth = document.getElementById('expressionWidth');
@@ -30,7 +32,10 @@ const attachFormat = () => {
   }
 
   function format() {
+    debugger;
     try {
+      const identifierQuotationOptionValue =
+        identifierQuotation.options[identifierQuotation.selectedIndex].value;
       const config = {
         language: language.options[language.selectedIndex].value,
         tabWidth: tabWidth.value,
@@ -39,6 +44,14 @@ const attachFormat = () => {
         dataTypeCase: dataTypeCase.options[dataTypeCase.selectedIndex].value,
         functionCase: functionCase.options[functionCase.selectedIndex].value,
         identifierCase: identifierCase.options[identifierCase.selectedIndex].value,
+        identifierQuotation: identifierQuotationOptionValue,
+        identifierQuotationCharacter:
+          identifierQuotationOptionValue && identifierQuotationOptionValue === 'preserve'
+            ? null
+            : decodeURI(
+                identifierQuotationCharacter.options[identifierQuotationCharacter.selectedIndex]
+                  .value
+              ),
         indentStyle: indentStyle.options[indentStyle.selectedIndex].value,
         logicalOperatorNewline:
           logicalOperatorNewline.options[logicalOperatorNewline.selectedIndex].value,
@@ -77,6 +90,8 @@ const attachFormat = () => {
     dataTypeCase,
     functionCase,
     identifierCase,
+    identifierQuotation,
+    identifierQuotationCharacter,
     indentStyle,
     logicalOperatorNewline,
     expressionWidth,

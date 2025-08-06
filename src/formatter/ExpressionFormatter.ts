@@ -322,7 +322,25 @@ export default class ExpressionFormatter {
   }
 
   private formatIdentifier(node: IdentifierNode) {
-    this.layout.add(this.showIdentifier(node), WS.SPACE);
+    const identifierText = this.showIdentifier(node);
+    console.log(
+      'this.cfg.quotationCharacter?.toString() : ',
+      this.cfg.quotationCharacter?.toString()
+    );
+    if (this.cfg.identifierQuotation && this.cfg.identifierQuotation !== 'preserve') {
+      if (!node.quoted) {
+        this.layout.add(
+          this.cfg.quotationCharacter?.toString(),
+          identifierText,
+          this.cfg.quotationCharacter?.toString(),
+          WS.SPACE
+        );
+      } else {
+        this.layout.add(identifierText, WS.SPACE);
+      }
+    } else {
+      this.layout.add(identifierText, WS.SPACE);
+    }
   }
 
   private formatParameter(node: ParameterNode) {
