@@ -18,6 +18,7 @@ import supportsParamTypes from './options/paramTypes.js';
 import supportsWindowFunctions from './features/windowFunctions.js';
 import supportsFunctionCase from './options/functionCase.js';
 import supportsDisableComment from './features/disableComment.js';
+import supportsQuotedIdentifier from './options/quotedIdentifier.js';
 
 /**
  * Core tests for all SQL formatters
@@ -32,6 +33,7 @@ export default function behavesLikeSqlFormatter(format: FormatFn) {
   supportsUseTabs(format);
   supportsKeywordCase(format);
   supportsIdentifierCase(format);
+  supportsQuotedIdentifier(format);
   supportsFunctionCase(format);
   supportsIndentStyle(format);
   supportsLinesBetweenQueries(format);
