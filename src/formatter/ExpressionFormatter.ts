@@ -322,24 +322,24 @@ export default class ExpressionFormatter {
   }
 
   private formatIdentifier(node: IdentifierNode) {
-    const identifierText = this.showIdentifier(node);
-    console.log(
-      'this.cfg.quotationCharacter?.toString() : ',
-      this.cfg.quotationCharacter?.toString()
-    );
-    if (this.cfg.identifierQuotation && this.cfg.identifierQuotation !== 'preserve') {
-      if (!node.quoted) {
+    let identifierText = this.showIdentifier(node);
+    if (this.cfg.identifierQuotation !== 'preserve' && node.quoted) {
+      identifierText = identifierText.substring(1, identifierText.length - 1);
+    }
+    switch (this.cfg.identifierQuotation) {
+      case 'preserve':
+        this.layout.add(identifierText, WS.SPACE);
+        break;
+      case 'unquoted':
+        this.layout.add(identifierText, WS.SPACE);
+        break;
+      case 'quoted':
         this.layout.add(
           this.cfg.quotationCharacter?.toString(),
           identifierText,
           this.cfg.quotationCharacter?.toString(),
           WS.SPACE
         );
-      } else {
-        this.layout.add(identifierText, WS.SPACE);
-      }
-    } else {
-      this.layout.add(identifierText, WS.SPACE);
     }
   }
 

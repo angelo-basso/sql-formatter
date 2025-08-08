@@ -32,7 +32,6 @@ const attachFormat = () => {
   }
 
   function format() {
-    debugger;
     try {
       const identifierQuotationOptionValue =
         identifierQuotation.options[identifierQuotation.selectedIndex].value;
@@ -45,7 +44,7 @@ const attachFormat = () => {
         functionCase: functionCase.options[functionCase.selectedIndex].value,
         identifierCase: identifierCase.options[identifierCase.selectedIndex].value,
         identifierQuotation: identifierQuotationOptionValue,
-        identifierQuotationCharacter:
+        quotationCharacter:
           identifierQuotationOptionValue && identifierQuotationOptionValue === 'preserve'
             ? null
             : decodeURI(
