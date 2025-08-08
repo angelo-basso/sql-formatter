@@ -10,8 +10,7 @@ export default function supportsQuotedIdentifier(format: FormatFn) {
         "col2",
         \`col3\`
       FROM
-        "table1" AS \`table2\`;
-    `);
+        "table1" AS \`table2\`;`);
   });
 
   it('should quote identifiers with double quotes', () => {
@@ -25,8 +24,7 @@ export default function supportsQuotedIdentifier(format: FormatFn) {
         "col2",
         "col3"
       FROM
-        "table1" AS "table2";
-    `);
+        "table1" AS "table2";`);
   });
 
   it('should quote identifiers with backticks', () => {
@@ -38,8 +36,7 @@ export default function supportsQuotedIdentifier(format: FormatFn) {
       SELECT \`col1\`,
              \`col2\`,
              \`col3\`
-      FROM \`table1\` AS \`table2\`;
-    `);
+      FROM \`table1\` AS \`table2\`;`);
   });
 
   it('should remove quote from identifiers', () => {
@@ -47,12 +44,9 @@ export default function supportsQuotedIdentifier(format: FormatFn) {
       identifierQuotation: 'unquoted',
     });
     expect(result).toBe(dedent`
-      SELECT
-        col1,
-        col2,
-        col3
-      FROM
-        table1 AS table2;
-    `);
+      SELECT col1,
+             col2,
+             col3
+      FROM table1 AS table2;`);
   });
 }
