@@ -12,6 +12,7 @@ import supportsIdentifiers from './features/identifiers.js';
 import supportsInsertInto from './features/insertInto.js';
 import supportsUpdate from './features/update.js';
 import supportsTruncateTable from './features/truncateTable.js';
+import supportsQuotedIdentifier from './options/quotedIdentifier.js';
 
 /**
  * Shared tests for MySQL and MariaDB
@@ -21,6 +22,7 @@ export default function behavesLikeMariaDbFormatter(format: FormatFn) {
   supportsComments(format, { hashComments: true });
   supportsStrings(format, ["''-qq", "''-bs", '""-qq', '""-bs', "X''"]);
   supportsIdentifiers(format, ['``']);
+  supportsQuotedIdentifier(format);
   supportsDropTable(format, { ifExists: true });
   supportsDeleteFrom(format);
   supportsInsertInto(format, { withoutInto: true });
