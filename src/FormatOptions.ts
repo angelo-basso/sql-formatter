@@ -17,7 +17,7 @@ export interface FormatOptions {
   keywordCase: KeywordCase;
   identifierCase: IdentifierCase;
   identifierQuotation: 'quoted' | 'unquoted' | 'preserve';
-  quotationCharacter: '"' | '`' | "'";
+  quotationCharacter: '"' | '`';
   dataTypeCase: DataTypeCase;
   functionCase: FunctionCase;
   indentStyle: IndentStyle;
