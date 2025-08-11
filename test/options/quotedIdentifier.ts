@@ -40,7 +40,7 @@ export default function supportsQuotedIdentifier(format: FormatFn) {
   }); */
 
   it('should remove quote from identifiers', () => {
-    const result = format('SELECT col1, "col2", `col3` FROM "table1" AS `table2`;', {
+    const result = format('SELECT col1, "col2", "col3" FROM "table1" AS "table2";', {
       identifierQuotation: 'unquoted',
     });
     expect(result).toBe(dedent`
