@@ -44,6 +44,8 @@ const defaultOptions: FormatOptions = {
   useTabs: false,
   keywordCase: 'preserve',
   identifierCase: 'preserve',
+  identifierQuotation: 'preserve',
+  quotationCharacter: '`',
   dataTypeCase: 'preserve',
   functionCase: 'preserve',
   indentStyle: 'standard',

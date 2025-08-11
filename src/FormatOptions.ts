@@ -16,6 +16,8 @@ export interface FormatOptions {
   useTabs: boolean;
   keywordCase: KeywordCase;
   identifierCase: IdentifierCase;
+  identifierQuotation: 'quoted' | 'unquoted' | 'preserve';
+  quotationCharacter: '"' | '`';
   dataTypeCase: DataTypeCase;
   functionCase: FunctionCase;
   indentStyle: IndentStyle;

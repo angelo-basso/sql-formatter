@@ -322,7 +322,25 @@ export default class ExpressionFormatter {
   }
 
   private formatIdentifier(node: IdentifierNode) {
-    this.layout.add(this.showIdentifier(node), WS.SPACE);
+    let identifierText = this.showIdentifier(node);
+    if (this.cfg.identifierQuotation !== 'preserve' && node.quoted) {
+      identifierText = identifierText.substring(1, identifierText.length - 1);
+    }
+    switch (this.cfg.identifierQuotation) {
+      case 'preserve':
+        this.layout.add(identifierText, WS.SPACE);
+        break;
+      case 'unquoted':
+        this.layout.add(identifierText, WS.SPACE);
+        break;
+      case 'quoted':
+        this.layout.add(
+          this.cfg.quotationCharacter?.toString(),
+          identifierText,
+          this.cfg.quotationCharacter?.toString(),
+          WS.SPACE
+        );
+    }
   }
 
   private formatParameter(node: ParameterNode) {
