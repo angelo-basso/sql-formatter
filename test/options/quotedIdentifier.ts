@@ -4,7 +4,7 @@ import { FormatFn } from '../../src/sqlFormatter.js';
 export default function supportsQuotedIdentifier(format: FormatFn) {
   it('should preserve identifiers has they are', () => {
     const result = format('SELECT col1, "col2", "col3" FROM "table1" AS table2;');
-    expect(result).toBe(dedent`
+    expect(result).toBe(`
       SELECT
         col1,
         "col2",
@@ -44,9 +44,11 @@ export default function supportsQuotedIdentifier(format: FormatFn) {
       identifierQuotation: 'unquoted',
     });
     expect(result).toBe(dedent`
-      SELECT col1,
-             col2,
-             col3
-      FROM table1 AS table2;`);
+      SELECT
+        col1,
+        col2,
+        col3
+      FROM
+        table1 AS table2;`);
   });
 }
